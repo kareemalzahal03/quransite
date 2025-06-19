@@ -1,0 +1,8 @@
+<header class="container header-theme-mount">
+  <script type="text/props">
+    {
+      "siteTitle": {{ .Site.Title | jsonify }},
+      "menuItems": {{ .Site.Params.mainmenu | jsonify }}
+    }
+  </script>
+</header>

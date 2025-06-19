@@ -1,0 +1,16 @@
+{{ range $num := seq 1 114 }}
+  {{ $num_str := (string $num) }}
+
+  {{ $page := dict
+    "kind" "page"
+    "path" $num_str
+    "params" (dict
+      "data" (index $.Site.Data.surahdata $num_str)
+      "surah_text" (index $.Site.Data.versetokens $num_str)
+      "surah_translation" (index $.Site.Data.SaheehInternational $num_str))
+  }}
+
+  {{ $.AddPage $page }}
+
+{{ end }}
+

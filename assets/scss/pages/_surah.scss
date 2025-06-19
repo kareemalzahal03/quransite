@@ -1,0 +1,81 @@
+body {
+  text-align: center;
+  --surah-display-width: 800px;
+}
+
+// Surah Next/Prev
+
+.next-prev-surah {
+  line-height: normal;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: var(--surah-display-width);
+}
+.next-prev-surah a {
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  padding: 0.5rem;
+  border-radius: 0.5em;
+}
+
+
+// Surah Container
+
+.surahcontainer {
+  max-width: var(--surah-display-width);
+  margin: auto;
+}
+
+.surahcontainer > hr {
+  border-width: 0 0 2px 0;
+  width: 100%;
+  border-color: var(--color-text);
+  opacity: 0.15;
+  // border-color: var(--color-contrast-medium);
+}
+
+// Surah Name
+
+.surahnamecontainer {
+  position: relative;
+  width: 100%;
+}
+.overlap {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.bismillah {
+  width: 50%;
+  min-width: 250px;
+  margin: auto;
+}
+
+// Verse Text
+
+.verse-text {
+  text-wrap: balance;
+  font-size: var(--font-size-xl);
+  display: inline-block;
+  padding: 0 1.5rem;
+}
+.verse-text span {
+  margin-inline-end: 0.1em;
+  font-family: 'QPC Hafs font';
+  display: inline-block;
+}
+.verse-text span:hover {
+  color: var(--color-primary);
+  background-color: rgba(86, 184, 237, 0.1);
+  border-radius: 0.3em;
+  cursor: pointer;
+}
+.verse-text .highlighted {
+  color: var(--color-primary);
+  background-color: rgba(86, 184, 237, 0.1);
+  border-radius: 0.3em;
+  cursor: pointer;
+}

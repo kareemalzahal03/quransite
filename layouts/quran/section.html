@@ -1,0 +1,40 @@
+{{ define "main" }}
+
+<title>{{ .Title }}</title>
+
+<div style="width: 60%; max-width: 400px; margin: auto;">
+  {{ partial "svg/Quran_Kareem.svg" . }}
+</div>
+
+<h1 style="font-family: Lateef; font-style: italic;">
+  Al-Qur’an Al-Karim<br>
+  The Noble Quran
+</h1>
+
+<!-- <p style="max-width: 1000px; text-wrap: balance; text-align: center;">
+The Quran is the Word of God, revealed to the Prophet Muhammad for the benefit of Human beings. The Quran contains guidance, mercy, and healing. The Quran is beyond doubt from the Lord of the Universe.
+</p> -->
+
+
+{{ $all_surah_data := .Site.Data.surahdata }}
+<div class="surah_navigation">
+  {{ range $surah_number := seq 1 114}}
+    {{ $surah := index $all_surah_data (string $surah_number) }}
+
+    <a class="surah_item" role="button" href="/quran/{{ $surah_number }}">
+      <div class="arabic_name">
+        <span>&#xE{{ printf "%03d" (int $surah_number) }}</span>
+      </div>
+      <div class="transliterated_name">
+        {{$surah_number}}. {{ $surah.name_transliterated }}<br>
+      </div>
+      <div class="english_name">
+        {{ $surah.name_translated }}<br>
+        {{ $surah.verses_count }} Ayahs
+      </div>
+    </a>
+  {{ end }}
+</div>
+
+
+{{ end }}

@@ -1,0 +1,16 @@
+
+.theme-toggle-button {
+  margin: 0.75rem 1rem;
+  font-size: var(--font-size-md);
+  width: 2.5rem;
+  height: 2.5rem;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.theme-toggle-button:hover {
+  background-color: var(--color-contrast-low);
+  border-radius: 50%;
+  cursor: pointer;
+}

@@ -1,0 +1,96 @@
+{{ define "main" }}
+
+<title>{{ .Params.data.name_transliterated }}</title>
+
+<!-- English Surah Name & Navigation -->
+{{ $next := add (int .Params.data.surah_number) 1 }}
+{{ if eq $next 115 }} {{ $next = 1 }} {{ end }}
+{{ $prev := sub (int .Params.data.surah_number) 1 }}
+{{ if eq $prev 0 }} {{ $prev = 114 }} {{ end }}
+<h2 style="margin: 0;">
+  {{.Params.data.surah_number}}. {{ .Params.data.name_transliterated }}
+</h2>
+<div class="next-prev-surah">
+  <a href="/quran/{{ $prev }}">← {{ $prev }}</a>
+  <div style="margin: 0;"> {{ .Params.data.name_translated }} </div>
+  <a href="/quran/{{ $next }}">{{ $next }} →</a>
+</div>
+
+<hr>
+<div translate="no" class="surahcontainer">
+
+  <!-- Arabic Surah Name Container -->
+  <div class="surahnamecontainer">
+    <!-- Background Style SVG -->
+    {{ partial "/svg/nameboxV2.svg" . }}
+    <!-- Arabic Surah Info -->
+    <svg class="overlap" viewBox="0 0 1632 205">
+      <g fill="currentColor" text-anchor="middle">
+        <!-- Verses Count -->
+        <text x="338" y="150" font-size="45" style="font-family: Lateef;">
+          {{ .Params.data.arabic_verses_count }}
+        </text>
+        <!-- Surah Number -->
+        <text x="1292" y="150" font-size="45" style="font-family: Lateef;">
+          {{ .Params.data.arabic_surah_number }}
+        </text>
+        <!-- Surah Name -->
+        <text x="50%" y="150" font-size="150" style="font-family: sura_names;">
+          &#xE{{ printf "%03d" (int .Params.data.surah_number) }} &#xE000
+        </text>
+      </g>
+    </svg>
+  </div>
+
+  <!-- Bismillah -->
+  {{ if .Params.data.add_bismillah }}
+    <div class="bismillah">
+      {{ partial "/svg/bismillah.svg" . }}
+    </div>
+    <div class="verse-translation">
+      In the name of Allāh, the Entirely Merciful, the Especially Merciful.
+    </div>
+    <hr>
+  {{ end }}
+
+  {{ $surah_number := .Params.data.surah_number }}
+
+  <!-- Print Verses in Order -->
+  {{ range $verse_number := seq 1 .Params.data.verses_count }}
+
+    <!-- Print Horizontal Line -->
+    {{ if gt $verse_number 1 }} <hr> {{ end }}
+
+    <div class="verse-container" id="{{$verse_number}}">
+
+      <!-- Preact Verse Text Mount -->
+      <div class="verse-text-mount">
+        <script type="text/props">
+          {
+            "surah_data": {{ $.Params.data | jsonify }},
+            "verse_number": {{ (string $verse_number) }},
+            "tokens": {{ index $.Params.surah_text (string $verse_number) | jsonify }}
+          }
+        </script>
+      </div>
+
+      <!-- Preact Verse Translation Mount -->
+      <div class="verse-translation-mount">
+        <script type="text/props">
+          {{ index $.Params.surah_translation (string $verse_number) | jsonify }}
+        </script>
+      </div>
+
+    </div>
+
+  {{ end }}
+
+</div>
+<hr>
+
+<div class="next-prev-surah">
+  <a href="/quran/{{ $prev }}">← {{ $prev }}</a>
+  <a href="/quran/{{ $next }}">{{ $next }} →</a>
+</div>
+
+{{ end }}

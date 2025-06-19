@@ -1,0 +1,29 @@
+
+.search_segments {
+    scrollbar-gutter: stable;
+    overflow-y: scroll;
+    max-height: 300px;
+    display:flex;
+    padding: 24px 34px;
+    text-align:center;
+    flex-direction:column;
+    row-gap: 12px;
+    align-items:center;
+    font-size: var(--font-size-base);
+    text-wrap: balance;
+}
+.search_segments > hr {
+    border-width: 0 0 2px 0;
+    margin: 12px 0px;
+    width: 100%;
+    border-color: var(--color-text);
+    opacity: 0.15;
+}
+.search_segments .highlighted {
+    color: var(--color-primary);
+}
+.arabic_word {
+    font-family: "QPC Hafs font";
+    direction: rtl;
+    font-size: var(--font-size-lg);
+}

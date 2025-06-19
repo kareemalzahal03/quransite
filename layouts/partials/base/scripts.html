@@ -1,0 +1,17 @@
+<!-- JSX -->
+{{ with resources.Get "jsx/app.jsx" }}
+  {{ $defines := dict
+    "process.env.NODE_ENV" hugo.Environment
+    "process.env.BaseURL" (printf `"%s"` $.Site.BaseURL) }}
+  {{ $options := dict 
+    "defines" $defines
+    "JSXFactory" "h"
+    "JSXFragment" "Fragment"
+    "minify" hugo.IsProduction
+    "uglify" hugo.IsProduction}}
+  {{ if not hugo.IsProduction }}
+    {{ $options = merge $options (dict "sourceMap" "inline") }}
+  {{ end }}
+  {{ $script := . | js.Build $options }}
+  <script src="{{ $script.RelPermalink }}" defer></script>
+{{end}}

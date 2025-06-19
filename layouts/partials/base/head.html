@@ -1,0 +1,23 @@
+<!-- Meta Tags -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="google" content="notranslate"/>
+
+<!-- Styles -->
+{{ $sass := resources.Get "scss/main.scss" }}
+{{ $options := (dict "enableSourceMap" (not hugo.IsProduction)) }}
+{{ $style := $sass | css.Sass $options }}
+{{ $final := $style }}
+{{ if hugo.IsProduction }}
+  {{/*  Only minify in production to allow source maps  */}}
+  {{ $final = $final | minify }}
+{{ end }}
+<link rel="stylesheet" href="{{ $final.Permalink }}" />
+
+<!-- Favicon -->
+
+<!-- SEO -->
+
+<!-- GTM -->
+  

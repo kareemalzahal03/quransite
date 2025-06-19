@@ -1,0 +1,21 @@
+<footer class="footer">
+	<!-- Links -->
+	<div>
+		<a href="{{ "/" | relURL }}">Home</a>
+		{{ with .Site.Menus.footer }}
+			{{ range . }}
+				&nbsp;|&nbsp; <a href="{{ .URL }}">{{ .Name }}</a>
+			{{ end }}
+		{{ end }}
+	</div>
+	<!-- Copyright All Rights Reserved -->
+	<div class="footer-copyright" style="margin-top: 0.5rem;">
+		© {{ now.Format "2006" }}
+		{{ .Site.Params.author.name | default .Site.Title }}.
+		All rights reserved.
+	</div>
+	<!-- Powered By Hugo -->
+	<!-- <div style="margin-top: 0.5rem;">
+		<small>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a></small>
+	</div> -->
+</footer>

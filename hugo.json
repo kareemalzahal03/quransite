@@ -1,0 +1,37 @@
+{
+   "baseURL": "https://example.org/",
+   "languageCode": "en-us",
+   "title": "Quran Word Insignts",
+   "newContentEditor": "code",
+   "params": {
+      "description": "A simple Quran reader",
+      "keywords": ["quran","reader","hugo"],
+      "author": {
+         "name": "Kareem Alzahal",
+         "email": ""
+      },
+      "mainmenu": [
+        { "name": "Quran", "url": "/quran" },
+        {
+         "name": "About",
+         "children": [
+            { "name": "Sources", "url": "/sources" }
+         ]
+        }
+      ]
+   },
+
+   
+
+
+
+   "menus": {
+      "footer": [
+         {
+            "name": "Quran",
+            "pageRef": "/quran",
+            "weight": 1
+         }
+      ]
+   }
+}

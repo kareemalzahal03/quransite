@@ -1,0 +1,46 @@
+.surah_navigation {
+  direction: ltr;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  align-content: stretch;
+  gap: 1rem;   
+  padding: 1rem;
+  align-content: space-evenly;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.surah_item {
+	color: var(--text-color);
+	flex-grow: 1;
+	padding: 0.5rem;
+	background-color: var(--color-contrast-lower);
+	border: 0.2em solid var(--color-contrast-low);
+	border-radius: 1em;
+	cursor: pointer;
+	font-family: Lateef;
+}
+@keyframes pulseGlow {
+  0% {box-shadow: 0 0 10px var(--color-primary),0 0 10px var(--color-primary);}
+  100% {box-shadow: 0 0 5px var(--color-primary), 0 0 5px var(--color-primary);}
+}
+.surah_item:hover {
+  background-color: var(--color-bg);
+  border-color: var(--color-primary);
+  cursor: pointer;
+  text-decoration: none;
+  animation: pulseGlow 2s infinite ease-in-out alternate;
+}
+.surah_item .arabic_name {
+  font-size: var(--font-size-xxl);
+  font-family: 'sura_names';
+}
+.surah_item .transliterated_name {
+  font-size: var(--font-size-md);
+}
+.surah_item .english_name {
+  font-size: var(--font-size-base);
+}
