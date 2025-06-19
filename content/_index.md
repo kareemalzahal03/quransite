@@ -4,7 +4,7 @@
    "title": "Home"
 }
 
-# Al-Quran: Word Insights
+# Quran: Word Insights
 
 A powerful tool designed to help you explore the language, structure, and depth of every word in the Quran.
 
